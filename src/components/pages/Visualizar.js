@@ -1,8 +1,11 @@
+import styles from "./Visualizar.module.css"
 import {useParams} from "react-router-dom"
 import {useState} from "react"
+import loading from '../../imgs/loading.svg'
 function Visualizar(){
     const {id}=useParams()
     const [letra,setLetra]=useState()
+    let contLetra=""
     fetch(`http://localhost:5000/api/${id}`,{
         method:"GET",
         headers:{
@@ -11,17 +14,21 @@ function Visualizar(){
     }).then((res)=>res.json()).then((data)=>{
         setLetra(data[0]?.letras)
         if(letra){
-        for(let i=0;i<data[0].letras.length;i++){
-            if(data[0]?.letras[i]=="\n"){
-                letra.replace("\n","%")
-            }
+            contLetra=letra.replace(/\n/g,"<br>")
+            setLetra(contLetra)
         }
-    }
     })
     return(
-        <div className={`container`}>
-            {letra}
+        <div>
+            {!letra&&(
+                <div className={`w-100 d-flex align-items-center justify-content-center`}>
+                    <img src={loading} width={50} height={50}></img>
+                </div>
+            )}
+            {letra &&(
+            <div className={`${styles.text}`} dangerouslySetInnerHTML={{__html:letra}}></div>
+            )}
         </div>
     )
 }
-export default Visualizar
+export default Visualizar;

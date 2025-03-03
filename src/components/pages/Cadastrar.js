@@ -1,21 +1,27 @@
 import styles from "./Cadastrar.module.css"
 import {useState} from "react"
+import Message from "../layout/Message.js"
+import { set } from "mongoose"
 function Cadastrar(){
     const [nome,setNome]=useState()
     const [letra,setLetra]=useState()
-    function enviar(e){
+    const [message,setMessage]=useState("")
+    const [type,setType]=useState()
+    async function enviar(e){
         e.preventDefault()
         let dados={nome:nome,letra:letra}
-        fetch("http://localhost:5000/cadastrar",{
+        await fetch("http://localhost:5000/cadastrar",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"
            },
            body:JSON.stringify(dados)
-        }).then(()=>{
-            console.log("Foi")
+        }).then((resp)=>resp.json()).then(()=>{
+            setMessage("Música Cadastrada");
+            setType("success")
         }).catch((err)=>{
-            console.log(err)
+            setType("danger");
+            setMessage("Erro ao cadastrar a música")
         })
     }
     return(
@@ -28,6 +34,9 @@ function Cadastrar(){
                 <textarea className={`form-control ${styles.letra}`} onChange={(e)=>{setLetra(e.target.value)}}></textarea>
                 <button type="submit" className={`btn btn-success`}>Cadastrar</button>
             </form>
+            {message && message.length>0 && (
+                <Message type={type} msg={message}/>
+            )}
         </div>
     )
 }
