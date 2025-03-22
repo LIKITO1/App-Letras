@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express=require("express");
 const app=express()
 const cors=require("cors")
@@ -6,11 +7,11 @@ const bodyParser=require("body-parser")
 app.use(cors())
 app.use(bodyParser.json());
 const pool=mysql.createPool({
-    user:"root",
-    password:"MGyTTOmhgFIUiqnoXqeffuDwhDLrHtkf",
-    host:"shortline.proxy.rlwy.net",
-    database:"railway",
-    port:"15934"
+    user:process.env.DB_USER,
+    password:process.env.DB_PASS,
+    host:process.env.DB_HOST,
+    database:process.env.DB,
+    port:process.env.PORT
 })
 app.post("/cadastrar",(req,res)=>{
     const {nome,letra}=req.body;
@@ -20,7 +21,7 @@ app.post("/cadastrar",(req,res)=>{
     })
 })
 app.get("/api/:id",(req,res)=>{
-    pool.query(`SELECT * FROM musicas WHERE id=${req.params.id}`,(err,valor)=>{
+    pool.query(`SELECT * FROM musicas WHERE id=?`,[req.params.id],(err,valor)=>{
         if(err) console.log(err);
         res.send(valor)
     })
@@ -32,7 +33,7 @@ app.get("/api",(req,res)=>{
     })
 })
 app.delete("/api/:id",(req,res)=>{
-    pool.query(`DELETE FROM musicas WHERE id=${req.params.id}`,(err,valor)=>{
+    pool.query(`DELETE FROM musicas WHERE id=?`,[req.params.id],(err,valor)=>{
         if(err) console.log(err);
         res.send(true)
     })

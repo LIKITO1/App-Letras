@@ -12,6 +12,12 @@ function BtnApagar({id}){
         }).then(()=>{
             setMessage("Música excluída")
             setType("success")
+            setTimeout(()=>{
+                setMessage("Fazendo alterações...")
+            },1000)
+            setTimeout(()=>{
+                window.location.reload()
+            },2000)
         }).catch((err)=>{
             setMessage("Algo deu errado ao excluir a música")
             setType("danger")
