@@ -1,0 +1,11 @@
+.link{
+    text-decoration: none;
+    font-size: 1.2vw;
+    transition: all 0.5s;
+}
+.link:hover{
+    font-size:1.4vw;
+}
+.menu{
+    height: 12.5vh;
+}

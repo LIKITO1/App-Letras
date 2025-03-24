@@ -1,0 +1,17 @@
+.cont{
+    z-index: 10;
+    width: 100%;
+    top: 10%;
+    opacity: 1;
+    animation: aparecer 1s ease;
+}
+@keyframes aparecer{
+    0%{
+        top: 0;
+        opacity: 0;
+    }
+    100%{
+        top: 10%;
+        opacity: 1;
+    }
+}
