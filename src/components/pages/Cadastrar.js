@@ -9,7 +9,7 @@ function Cadastrar(){
     async function enviar(e){
         e.preventDefault()
         let dados={nome:nome,letra:letra}
-        await fetch("/cadastrar",{
+        await fetch("https://backend-app-letras.onrender.com/cadastrar",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"

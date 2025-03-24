@@ -6,7 +6,7 @@ function Visualizar(){
     const {id}=useParams()
     const [letra,setLetra]=useState()
     let contLetra=""
-    fetch(`/api/${id}`,{
+    fetch(`https://backend-app-letras.onrender.com/api/${id}`,{
         method:"GET",
         headers:{
             "Content-Type":"application/json"

@@ -9,7 +9,7 @@ function App() {
   const [message,setMessage]=useState("")
   const [type,setType]=useState()
   async function requisitar(){
-    await fetch("/api",{
+    await fetch("https://backend-app-letras.onrender.com/api",{
       method:"GET",
       headers:{
         "Content-Type":"application/json"

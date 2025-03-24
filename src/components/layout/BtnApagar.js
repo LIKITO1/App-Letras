@@ -4,7 +4,7 @@ function BtnApagar({id}){
     const [message,setMessage]=useState("")
     const [type,setType]=useState()
     async function apagar(){
-        await fetch(`/api/${id}`,{
+        await fetch(`https://backend-app-letras.onrender.com/api/${id}`,{
             method:"DELETE",
             headers:{
                 "Content-Type":"application/json"
