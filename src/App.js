@@ -26,7 +26,7 @@ function App() {
   },[message])
   return (
     <div className={`container position-relative`}>
-      <h1>Músicas:</h1>
+      <h1 className="title">Músicas:</h1>
       {data&&(
         <div>{data.map((valor)=>{
           return <div key={valor?.id} className="teste"><Link to={`/visualizar/${valor?.id}`} key={valor?.id} className="link">{valor?.nomes}</Link><BtnApagar id={valor?.id}/></div>

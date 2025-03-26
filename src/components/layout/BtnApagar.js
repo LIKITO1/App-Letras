@@ -1,5 +1,6 @@
 import Message from "./Message.js"
 import {useState} from "react"
+import styles from "./BtnApagar.module.css"
 function BtnApagar({id}){
     const [message,setMessage]=useState("")
     const [type,setType]=useState()
@@ -25,7 +26,7 @@ function BtnApagar({id}){
     }
     return(
         <>
-            <button onClick={apagar} className="btn btn-danger">Apagar</button>
+            <button onClick={apagar} className={`btn btn-danger ${styles.apagar}`}>Apagar</button>
             {message&&message.length>0&&(
                 <Message type={type} msg={message}/>
             )}

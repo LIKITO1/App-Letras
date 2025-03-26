@@ -2,14 +2,22 @@
     font-size: 1.3vw;
     background: black;
     color: white;
-    margin: 2vw;
+    margin-top: 5vh;
     padding: 1.2vw;
     display: flex;
     align-items: center;
     justify-content:space-around;
     border-radius: 5vw;
+    height: 12.5vh;
 }
 .link{
     text-decoration: none;
     color: white;
+    background: gray;
+    padding: 1vw;
+    border-radius: 2vw;
+    font-size:3vh;
+}
+.title{
+    font-size:7vh;
 }

@@ -1,6 +1,9 @@
 .text{
-    column-width: 50%;
+    column-width:20vw;
     column-count: 5;
-    margin-left: 5vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
     margin-top: 2vh;
+    border: 1px solid black;
+    font-size: 3vh;
 }
