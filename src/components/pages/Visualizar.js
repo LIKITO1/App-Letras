@@ -1,11 +1,12 @@
 import styles from "./Visualizar.module.css"
 import {useParams} from "react-router-dom"
-import {useState} from "react"
+import {useState,useEffect} from "react"
 import loading from '../../imgs/loading.svg'
 function Visualizar(){
     const {id}=useParams()
     const [letra,setLetra]=useState()
     let contLetra=""
+    useEffect(()=>{
     fetch(`https://backend-app-letras.onrender.com/api/${id}`,{
         method:"GET",
         headers:{
@@ -18,6 +19,7 @@ function Visualizar(){
             setLetra(contLetra)
         }
     })
+},[letra])
     return(
         <div>
             {!letra&&(
